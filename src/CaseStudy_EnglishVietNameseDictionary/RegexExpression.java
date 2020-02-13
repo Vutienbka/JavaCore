@@ -36,7 +36,7 @@ public class RegexExpression {
         return vocabulary;
     }
     public String makeStandardPhonetic(String phonetic){
-        return phonetic;
+        return "/" + phonetic + "/";
     }
     public String makeStandardMeaning(String meaning){
         meaning = "\n" + meaning + "\n\n";
