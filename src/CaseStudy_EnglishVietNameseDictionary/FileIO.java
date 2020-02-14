@@ -3,15 +3,12 @@ package CaseStudy_EnglishVietNameseDictionary;
 import jdk.nashorn.internal.runtime.regexp.joni.Regex;
 
 import java.io.*;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.Map;
 import java.util.Scanner;
-
 
 public class FileIO {
     RegexExpression regexExpression;
-    public String FILE_PATH = "anhviet.txt";
+    public String FILE_PATH = "/home/vutienbka/IdeaProjects/absolute-number-caculattor/src/CaseStudy_EnglishVietNameseDictionary/anhviet.txt";
 
     public FileIO() {
     }

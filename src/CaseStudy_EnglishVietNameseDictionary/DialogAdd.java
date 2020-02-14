@@ -3,6 +3,19 @@ package CaseStudy_EnglishVietNameseDictionary;
 import javax.swing.JOptionPane;
 
 public class DialogAdd extends javax.swing.JFrame {
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btAdd;
+    private javax.swing.JButton btCancel;
+
+    private javax.swing.JLabel lbNewWord;
+    private javax.swing.JLabel lbNewPhonetic;
+    private javax.swing.JLabel lbNewMeaning;
+
+    public javax.swing.JTextField tfNewWord;
+    public javax.swing.JTextField tfNewPhonetic;
+    public javax.swing.JTextField tfNewMeaning;
+
+
     DicManage dicManage = new DicManage();
     MyWord myWord;
     FileIO fileIO;
@@ -18,8 +31,6 @@ public class DialogAdd extends javax.swing.JFrame {
         this.setAlwaysOnTop(true);
     }
 
-    @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         lbNewWord = new javax.swing.JLabel();
@@ -148,16 +159,4 @@ public class DialogAdd extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btCancelMouseClicked
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btAdd;
-    private javax.swing.JButton btCancel;
-
-    private javax.swing.JLabel lbNewWord;
-    private javax.swing.JLabel lbNewPhonetic;
-    private javax.swing.JLabel lbNewMeaning;
-
-    public javax.swing.JTextField tfNewWord;
-    public javax.swing.JTextField tfNewPhonetic;
-    public javax.swing.JTextField tfNewMeaning;
-    // End of variables declaration//GEN-END:variables
 }
