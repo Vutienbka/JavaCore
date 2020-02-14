@@ -10,7 +10,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 
-class DictGui extends javax.swing.JFrame {
+class DictUI extends javax.swing.JFrame {
     DicManage dicManage = new DicManage();
     Map<String,MyWord> wordList = dicManage.putMapFromFile();
 
@@ -44,12 +44,12 @@ class DictGui extends javax.swing.JFrame {
 
     private DefaultListModel listModel;
     private final boolean busy = false, select = true;
-    DialogAdd dla = new DialogAdd();
-    DialogEdit dle = new DialogEdit();
+    DialogAdd dlAdd = new DialogAdd();
+    DialogEdit dlEdit = new DialogEdit();
 
     public SimpleDateFormat sdf = new SimpleDateFormat("dd/MMM/yyyy zzz");
 
-    public DictGui() {
+    public DictUI() {
         setTitle("English-Vietnamese Dictionary");
         initComponents();
         status.setText("Ready");
@@ -379,7 +379,6 @@ class DictGui extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tfWordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfWordKeyPressed
-        // TODO add your handling code here:
         String a = tfWord.getText();
 
         if (evt.getKeyCode() == 10) {
@@ -389,7 +388,6 @@ class DictGui extends javax.swing.JFrame {
     }//GEN-LAST:event_tfWordKeyPressed
 
     private void tfWordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfWordKeyReleased
-        // TODO add your handling code here:
         if (tfWord.getText().compareTo("") != 0) {
             if (evt.getKeyCode() != 8) {
                 for (int i = 0; i < listModel.size(); i++) {
@@ -427,7 +425,7 @@ class DictGui extends javax.swing.JFrame {
     }//GEN-LAST:event_tfWordKeyReleased
 // Khi clich vao word trong WordList se set no hien tren TextField
     private void jList1ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jList1ValueChanged
-        // TODO add your handling code here:
+        //
         Object obj = evt.getSource();
 
         if (obj.equals(jList1) && !busy && select) {
@@ -452,38 +450,38 @@ class DictGui extends javax.swing.JFrame {
     }//GEN-LAST:event_jList1ValueChanged
 
     private void btFindActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFindActionPerformed
-        // TODO add your handling code here:
+        //
         status.setText("Tìm Kiếm");
         tpRead.setText(getFind(tfWord.getText()));
     }//GEN-LAST:event_btFindActionPerformed
 
     private void tfWordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfWordMouseClicked
-        // TODO add your handling code here:
+        //
         tfWord.selectAll();
         tfWord.setForeground(new java.awt.Color(50, 100, 0));
     }//GEN-LAST:event_tfWordMouseClicked
 
     private void btAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAddActionPerformed
-        // TODO add your handling code here:
-        dla.setVisible(true);// Hien thi dialog de them tu
-        dla.setLocation(300, 200); // Set vi tri dialog tren man hinh
-        dla.tfNewWord.setText(""); // Xet cac truong la trong khi chua nhap du lieu
-        dla.tfNewPhonetic.setText("");
-        dla.tfNewMeaning.setText("");
+        //
+        dlAdd.setVisible(true);// Hien thi dialog de them tu
+        dlAdd.setLocation(300, 200); // Set vi tri dialog tren man hinh
+        dlAdd.tfNewWord.setText(""); // Xet cac truong la trong khi chua nhap du lieu
+        dlAdd.tfNewPhonetic.setText("");
+        dlAdd.tfNewMeaning.setText("");
 
     }//GEN-LAST:event_btAddActionPerformed
 
     private void btEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditActionPerformed
-        // TODO add your handling code here:
+        //
         if (!jList1.isSelectionEmpty()) {
-            dle.setVisible(true);
-            dle.jLabel1.setText("Bạn đang sửa từ: ");
-            dle.jLabel4.setText(jList1.getSelectedValue().toString());
-            dle.jTextField1.setText(jList1.getSelectedValue().toString());
-            dle.jTextField2.setText("");
+            dlEdit.setVisible(true);
+            dlEdit.jLabel1.setText("Bạn đang sửa từ: ");
+            dlEdit.jLabel4.setText(jList1.getSelectedValue().toString());
+            dlEdit.jTextField1.setText(jList1.getSelectedValue().toString());
+            dlEdit.jTextField2.setText("");
 
         } else {
-            dle.setVisible(false);
+            dlEdit.setVisible(false);
             JOptionPane.showMessageDialog(null, "Không có từ được chọn");
         }
 
@@ -491,7 +489,7 @@ class DictGui extends javax.swing.JFrame {
     }//GEN-LAST:event_btEditActionPerformed
 
     private void btDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDeleteActionPerformed
-        // TODO add your handling code here:
+        //
         status.setText("Xóa Từ");
 
 
@@ -503,7 +501,7 @@ class DictGui extends javax.swing.JFrame {
     }//GEN-LAST:event_btWriteFileActionPerformed
 
     private void btFormFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFormFileActionPerformed
-        // TODO add your handling code here:
+        //
         status.setText("Tìm File");
 
         JFileChooser fileChoose = new JFileChooser();
@@ -514,31 +512,31 @@ class DictGui extends javax.swing.JFrame {
     }//GEN-LAST:event_btFormFileActionPerformed
 
     private void jPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseClicked
-        // TODO add your handling code here:
+        //
         status.setText("Ready");
         jList1.clearSelection();
 
     }//GEN-LAST:event_jPanel2MouseClicked
 
     private void tpReadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tpReadMouseClicked
-        // TODO add your handling code here:
+        //
         status.setText("Ready");
         jList1.clearSelection();
     }//GEN-LAST:event_tpReadMouseClicked
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
-        // TODO add your handling code here:
+        //
         status.setText("Ready");
         jList1.clearSelection();
     }//GEN-LAST:event_formMouseClicked
 
     private void btExit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExit1ActionPerformed
-        // TODO add your handling code here:
+        //
         System.exit(0);
     }//GEN-LAST:event_btExit1ActionPerformed
 
     private void btRefrestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRefrestActionPerformed
-        // TODO add your handling code here:
+        //
         listModel.clear();
         Init();
     }//GEN-LAST:event_btRefrestActionPerformed
@@ -562,11 +560,6 @@ class DictGui extends javax.swing.JFrame {
         col2.stream().forEach((myWord) -> {
             listModel.addElement(myWord.getEnglishWord());
         });
-    }
-
-    public void showTime() {
-        Date time = new Date();
-        dateTime.setText(sdf.format(time));
     }
 
 }

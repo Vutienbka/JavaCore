@@ -54,69 +54,7 @@ public class DicManage {
         }
         return "Null";
     }
-    public String searchVerbMean(String searchingWord) {
-        fileIO = new FileIO();
-        fileIO.readFile();
-        regexExpression = new RegexExpression("@(.*?)_/(.*?)\\*(.*?)__");
-        String verbMean = null;
-        String regex = regexExpression.getRegex();
-        searchingWord = regexExpression.makeStandardVocabulary(searchingWord);
-        Iterator<Map.Entry<String, MyWord>> wordEntryKey = wordList.entrySet().iterator();
-        try {
-            while (wordEntryKey.hasNext()) {
-                Map.Entry<String, MyWord> currentEntry = wordEntryKey.next();
-                if (currentEntry.getKey().equalsIgnoreCase(searchingWord)) {
-                    String string = currentEntry.getValue().getMeaning().replaceAll("\\n","");
-                    string = regexExpression.makeSequenceString(string);
-                    string = string + "__";
-                    Matcher m = regexExpression.getMatcher(regex,string);
-                    while (m.find()){
-                        // in tu moi va phat am
-                        verbMean = currentEntry.getKey() + m.group(2);
-                        String subVerbMeaning = m.group(3);
-                        subVerbMeaning = subVerbMeaning.replaceAll("nội động từ", "động từ* nội động từ");
-                        System.out.println(subVerbMeaning);
-                        {
-                            //regexExpression = new RegexExpression("\\*  (.*?)\\*\\*  động từ(.*?)$");
-                            regexExpression = new RegexExpression("(\\*  động từ(.*?)$)|(\\*  (.*?)\\*\\*  động từ(.*?)$)");
-                            String subRegex = regexExpression.getRegex();
-                            Matcher m1;
-                            m1 = regexExpression.getMatcher(subRegex,subVerbMeaning);
-                            while (m1.find()){
-                                verbMean += m1.group(2);
-                                verbMean=regexExpression.makeToStandardString(verbMean);
-                                //System.out.println(verbMean);
-                            }
-                        }
-                    }
-                }
-            }
-        }catch (NullPointerException e){
-            e.printStackTrace();
-        }
-        return verbMean;
-    }
 
-    public String searchNounMean(String subVerbMeaning){
-        // Tim danh tu
-        //subVerbMeaning = subVerbMeaning.replaceAll("danh từ", "động từ* nội động từ");
-        fileIO = new FileIO();
-        fileIO.readFile();
-        regexExpression = new RegexExpression("@(.*?)_/(.*?)\\*(.*?)__");
-        String verbMean = null;
-            regexExpression = new RegexExpression("^(.*?)[()(\\\\*\\\\*  động từ)]$");
-            String subRegex = regexExpression.getRegex();
-            //System.out.println(subVerbMeaning);
-            Matcher m1 = regexExpression.getMatcher(subRegex,subVerbMeaning);
-            while (m1.find()){
-                //System.out.println(m1.group(1));
-                verbMean = verbMean + m1.group(1);
-                //System.out.println(verbMean);
-                verbMean=regexExpression.makeToStandardString(verbMean);
-                System.out.println(verbMean);
-            }
-            return verbMean;
-    }
     public Map<String, MyWord> putMapFromFile() {
         fileIO = new FileIO();
         regexExpression = new RegexExpression();

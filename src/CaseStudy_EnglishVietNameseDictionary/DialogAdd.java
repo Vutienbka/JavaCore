@@ -6,10 +6,10 @@ public class DialogAdd extends javax.swing.JFrame {
     DicManage dicManage = new DicManage();
     MyWord myWord;
     FileIO fileIO;
-    DictGui dictGui;
-    /**
-     * Creates new form DialogAdd
-     */
+    DictUI dictUI;
+
+     //Creates new form DialogAdd
+
     public DialogAdd() {
         initComponents();
         setTitle("Input");
@@ -124,7 +124,6 @@ public class DialogAdd extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btAddMouseClicked(java.awt.event.MouseEvent evt)  {//GEN-FIRST:event_btAddMouseClicked
-        // TODO add your handling code here:
         myWord = new MyWord();
         fileIO = new FileIO();
         this.setVisible(false);
@@ -145,13 +144,9 @@ public class DialogAdd extends javax.swing.JFrame {
     }//GEN-LAST:event_btAddMouseClicked
 
     private void btCancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btCancelMouseClicked
-        // TODO add your handling code here:
+
         this.setVisible(false);
     }//GEN-LAST:event_btCancelMouseClicked
-
-    /**
-     * @param args the command line arguments
-     */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAdd;
